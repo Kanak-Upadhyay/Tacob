@@ -26,6 +26,11 @@ st.set_page_config(
 
 def _load_secrets() -> None:
     load_dotenv()
+    # Do not touch st.secrets unless a secrets file exists.
+    # On Streamlit Cloud, missing secrets can stop the whole app.
+    secrets_file = os.path.join(os.path.dirname(__file__), ".streamlit", "secrets.toml")
+    if not os.path.exists(secrets_file):
+        return
     try:
         for key in ("ADZUNA_APP_ID", "ADZUNA_APP_KEY", "ADZUNA_COUNTRY"):
             value = st.secrets.get(key, "")
