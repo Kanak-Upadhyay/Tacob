@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tacob — CV ATS & Job Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="top">
+    <div class="brand">
+      <span class="mark">T</span>
+      <div>
+        <strong>Tacob</strong>
+        <span>CV desk</span>
+      </div>
+    </div>
+    <p class="tag">Upload. Score. Match. Apply.</p>
+  </header>
+
+  <main>
+    <section id="intake" class="intake">
+      <div class="hero-copy">
+        <p class="eyebrow">Career desk for India job hunt</p>
+        <h1>Check your CV the way an ATS does — then find where to apply.</h1>
+        <p class="lede">
+          Upload a PDF or Word resume. Tacob reads it, scores ATS fit, matches live jobs,
+          and writes LinkedIn / Naukri application copy for your designation.
+        </p>
+        <ul class="points">
+          <li>ATS score with fix-it checklist</li>
+          <li>Search LinkedIn, Naukri, Indeed, Foundit</li>
+          <li>Ready-to-post apply notes and cover letter</li>
+        </ul>
+      </div>
+
+      <form id="upload-form" class="panel">
+        <label class="drop" id="drop">
+          <input id="file" name="file" type="file" accept=".pdf,.docx,.txt,.md" hidden />
+          <span class="drop-icon">↑</span>
+          <strong>Drop your CV here</strong>
+          <span>PDF, DOCX or TXT · max 6 MB</span>
+          <em id="file-name">No file chosen</em>
+        </label>
+
+        <div class="fields">
+          <label>
+            Target role
+            <input name="target_role" id="target_role" placeholder="e.g. Python Developer" />
+          </label>
+          <label>
+            Location
+            <input name="location" id="location" placeholder="e.g. Bengaluru" value="India" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn primary" id="analyze-btn">Check my CV</button>
+          <button type="button" class="btn ghost" id="sample-btn">Try sample resume</button>
+        </div>
+        <p class="fine">LinkedIn and Naukri listings open on their official sites with your role pre-filled. Live cards come from public job APIs.</p>
+      </form>
+    </section>
+
+    <section id="working" class="working hidden" aria-live="polite">
+      <div class="spinner"></div>
+      <p id="working-msg">Reading your CV…</p>
+    </section>
+
+    <section id="report" class="report hidden">
+      <div class="report-bar">
+        <button type="button" class="btn ghost sm" id="reset-btn">← New CV</button>
+        <div class="who" id="who"></div>
+        <button type="button" class="btn ghost sm" id="download-btn">Download report</button>
+      </div>
+
+      <nav class="tabs" role="tablist">
+        <button type="button" class="tab on" data-tab="overview">Overview</button>
+        <button type="button" class="tab" data-tab="ats">ATS report</button>
+        <button type="button" class="tab" data-tab="jobs">Job matches</button>
+        <button type="button" class="tab" data-tab="apply">Apply kit</button>
+        <button type="button" class="tab" data-tab="read">Read CV</button>
+      </nav>
+
+      <div id="panel-overview" class="tab-panel"></div>
+      <div id="panel-ats" class="tab-panel hidden"></div>
+      <div id="panel-jobs" class="tab-panel hidden"></div>
+      <div id="panel-apply" class="tab-panel hidden"></div>
+      <div id="panel-read" class="tab-panel hidden"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tacob runs on your computer. Resumes are processed in memory and not stored.</p>
+  </footer>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
